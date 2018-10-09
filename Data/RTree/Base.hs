@@ -504,6 +504,8 @@ instance  (Binary a) => Binary (RTree a) where
                         return $! node mbb c
                    _ -> fail "RTree.get: error while decoding RTree"
 
+instance (Semigroup a) => Semigroup (RTree a) where
+    (<>) = unionWith (<>)
 
 instance (Monoid a) => Monoid (RTree a) where
     mempty = empty
